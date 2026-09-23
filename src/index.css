@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Colors */
+  --color-tangerine-tag: #f69251;
+  --color-midnight-ink: #181825;
+  --color-graphite: #484758;
+  --color-deep-slate: #242433;
+  --color-carbon: #000000;
+  --color-stone: #636363;
+  --color-pebble: #949494;
+  --color-ash: #8b8b8b;
+  --color-fog: #f7f7f7;
+  --color-snow: #ffffff;
+  --color-peach-whisper: #fad7c1;
+  --color-dusty-rose: #c97b84;
+
+  /* Typography */
+  --font-pp-radio-grotesk-light: 'Plus Jakarta Sans', 'PP Radio Grotesk Light', sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'PP Radio Grotesk Light', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Newsreader', serif;
+
+  /* Radii */
+  --radius-cards: 24px;
+  --radius-buttons: 28px;
+  --radius-badges: 100px;
+  --radius-inputs: 0px;
+}
+
+@layer base {
+  html, body {
+    background-color: #f7f7f7;
+    color: #181825;
+    font-family: var(--font-inter);
+    letter-spacing: -0.015em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark, html.dark body {
+    background-color: #0b0c0e;
+    color: #e2e8f0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-pp-radio-grotesk-light);
+    color: #000000;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
+    color: #f8fafc;
+  }
+}
+
+/* Dialog Box Shadows */
+.shadow-dialog-subtle {
+  box-shadow: rgba(24, 24, 37, 0.12) 0px 2px 3px -2px;
+}
+
+.shadow-dialog-button {
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 2px 0px, rgba(0, 0, 0, 0.02) 0px 2px 4px 0px, rgba(0, 0, 0, 0.02) 0px 4px 8px 0px;
+}
+
+.shadow-dialog-mockup-fade {
+  box-shadow: rgba(247, 247, 247, 0.7) 0px -40px 40px 0px;
+}
+
+/* Dialog Button Styles */
+.btn-tangerine {
+  background-color: #f69251;
+  color: #000000;
+  border-radius: 28px;
+  padding: 12px 24px;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 2px 0px, rgba(0, 0, 0, 0.02) 0px 2px 4px 0px;
+}
+.btn-tangerine:hover {
+  background-color: #f5843a;
+  transform: translateY(-1px);
+}
+
+.btn-ghost-pill {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 28px;
+  padding: 12px 24px;
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: rgba(24, 24, 37, 0.08) 0px 2px 3px -2px;
+}
+.btn-ghost-pill:hover {
+  background-color: #fcfcfc;
+  transform: translateY(-1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f7f7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f69251;
+}
