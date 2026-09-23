@@ -216,10 +216,10 @@ export const ExcelDashboardSection: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-          <div className="flex items-center gap-1.5 bg-white dark:bg-[#16171f] border border-[#e5e5e5] dark:border-[#272835] p-1.5 rounded-full shadow-dialog-subtle">
+          <div className="flex max-w-full items-center gap-1.5 overflow-x-auto bg-white dark:bg-[#16171f] border border-[#e5e5e5] dark:border-[#272835] p-1.5 rounded-full shadow-dialog-subtle">
             <button
               onClick={() => setViewMode('bi')}
-              className={`px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer ${
+              className={`shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer ${
                 viewMode === 'bi'
                   ? 'bg-[#002060] text-white font-medium shadow-xs'
                   : 'text-[#636363] dark:text-[#94a3b8] hover:text-[#000000] dark:text-[#f8fafc]'

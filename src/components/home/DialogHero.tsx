@@ -99,7 +99,7 @@ export const DialogHero: React.FC = () => {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mb-8 flex items-center gap-2.5 bg-white dark:bg-[#16171f]/90 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#272835] px-3.5 py-1.5 rounded-full shadow-dialog-subtle"
+          className="mb-8 flex max-w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-1 bg-white dark:bg-[#16171f]/90 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#272835] px-3.5 py-1.5 rounded-full shadow-dialog-subtle"
         >
           <div className="relative">
             <img
@@ -161,16 +161,16 @@ export const DialogHero: React.FC = () => {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut', delay: 0.35 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-10"
+          className="flex w-full flex-wrap items-center justify-center gap-4 mb-10"
         >
           {/* Email Copy */}
-          <form onSubmit={handleCopyEmail} className="flex items-center gap-3 bg-white dark:bg-[#16171f]/90 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#272835] rounded-full pl-4 pr-1.5 py-1.5 shadow-dialog-subtle">
+          <form onSubmit={handleCopyEmail} className="flex w-full max-w-full min-w-0 items-center gap-2 bg-white dark:bg-[#16171f]/90 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#272835] rounded-full pl-3 pr-1.5 py-1.5 shadow-dialog-subtle sm:w-auto sm:gap-3 sm:pl-4">
             <input
               type="text"
               readOnly
               value={PROFILE.email}
               aria-label="Contact Email"
-              className="bg-transparent text-[#181825] dark:text-[#e2e8f0] font-sans text-sm focus:outline-none cursor-text select-all w-52"
+              className="min-w-0 flex-1 bg-transparent text-[#181825] dark:text-[#e2e8f0] font-sans text-sm focus:outline-none cursor-text select-all sm:w-52 sm:flex-none"
             />
             <button type="submit" className="btn-tangerine shrink-0 cursor-pointer text-sm">
               {copied ? '✓ Copied' : 'Copy email'}
@@ -210,14 +210,14 @@ export const DialogHero: React.FC = () => {
           className="w-full max-w-5xl"
         >
           {/* Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-5 bg-white dark:bg-[#16171f]/90 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#272835] p-1.5 rounded-full shadow-dialog-subtle w-fit mx-auto">
+          <div className="flex max-w-full flex-nowrap items-center justify-start gap-2 mb-5 overflow-x-auto bg-white dark:bg-[#16171f]/90 backdrop-blur-sm border border-[#e5e5e5] dark:border-[#272835] p-1.5 rounded-full shadow-dialog-subtle w-fit mx-auto">
             {HERO_PREVIEWS.map((preview) => {
               const isActive = activePreview.id === preview.id;
               return (
                 <button
                   key={preview.id}
                   onClick={() => setActivePreview(preview)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer ${
+                  className={`shrink-0 whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-sans transition-all cursor-pointer ${
                     isActive
                       ? 'bg-[#181825] text-white font-medium shadow-xs'
                       : 'text-[#636363] dark:text-[#94a3b8] hover:text-[#000000] dark:text-[#f8fafc] hover:bg-[#fafafa]'

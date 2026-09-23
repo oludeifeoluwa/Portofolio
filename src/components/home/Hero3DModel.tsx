@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { useTheme } from '../../context/ThemeContext';
 
 type ModelShape = 'icosahedron' | 'torusknot' | 'octahedron';
 
 export const Hero3DModel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentShape, setCurrentShape] = useState<ModelShape>('icosahedron');
+  const { isDark } = useTheme();
   const shapeRef = useRef<ModelShape>('icosahedron');
   shapeRef.current = currentShape;
 
@@ -57,9 +59,9 @@ export const Hero3DModel: React.FC = () => {
       // Outer wireframe lines
       const edges = new THREE.EdgesGeometry(baseGeo);
       const lineMaterial = new THREE.LineBasicMaterial({
-        color: 0x181825,
+        color: isDark ? 0xf8fafc : 0x181825,
         transparent: true,
-        opacity: 0.18,
+        opacity: isDark ? 0.28 : 0.18,
         linewidth: 1,
       });
       const wireframe = new THREE.LineSegments(edges, lineMaterial);
@@ -84,9 +86,9 @@ export const Hero3DModel: React.FC = () => {
       }
       const innerEdges = new THREE.EdgesGeometry(innerGeo);
       const innerLineMat = new THREE.LineBasicMaterial({
-        color: 0x8b8b8b,
+        color: isDark ? 0x94a3b8 : 0x8b8b8b,
         transparent: true,
-        opacity: 0.12,
+        opacity: isDark ? 0.2 : 0.12,
       });
       const innerWireframe = new THREE.LineSegments(innerEdges, innerLineMat);
       meshGroup.add(innerWireframe);
@@ -105,10 +107,10 @@ export const Hero3DModel: React.FC = () => {
     }
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const particleMat = new THREE.PointsMaterial({
-      color: 0x484758,
+      color: isDark ? 0x94a3b8 : 0x484758,
       size: 0.04,
       transparent: true,
-      opacity: 0.35,
+      opacity: isDark ? 0.45 : 0.35,
     });
     const dust = new THREE.Points(particleGeo, particleMat);
     scene.add(dust);
@@ -203,7 +205,7 @@ export const Hero3DModel: React.FC = () => {
       }
       renderer.dispose();
     };
-  }, [currentShape]);
+  }, [currentShape, isDark]);
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center">
@@ -220,7 +222,7 @@ export const Hero3DModel: React.FC = () => {
         <button
           onClick={() => setCurrentShape('icosahedron')}
           className={`px-2 py-0.5 rounded-full transition-colors cursor-pointer ${
-            currentShape === 'icosahedron' ? 'bg-[#181825] text-white font-medium' : 'hover:text-black'
+            currentShape === 'icosahedron' ? 'bg-[#181825] text-white dark:bg-[#f69251] dark:text-[#0b0c0e] font-medium' : 'hover:text-black dark:hover:text-white'
           }`}
         >
           Geodesic
@@ -228,7 +230,7 @@ export const Hero3DModel: React.FC = () => {
         <button
           onClick={() => setCurrentShape('torusknot')}
           className={`px-2 py-0.5 rounded-full transition-colors cursor-pointer ${
-            currentShape === 'torusknot' ? 'bg-[#181825] text-white font-medium' : 'hover:text-black'
+            currentShape === 'torusknot' ? 'bg-[#181825] text-white dark:bg-[#f69251] dark:text-[#0b0c0e] font-medium' : 'hover:text-black dark:hover:text-white'
           }`}
         >
           Torus
@@ -236,7 +238,7 @@ export const Hero3DModel: React.FC = () => {
         <button
           onClick={() => setCurrentShape('octahedron')}
           className={`px-2 py-0.5 rounded-full transition-colors cursor-pointer ${
-            currentShape === 'octahedron' ? 'bg-[#181825] text-white font-medium' : 'hover:text-black'
+            currentShape === 'octahedron' ? 'bg-[#181825] text-white dark:bg-[#f69251] dark:text-[#0b0c0e] font-medium' : 'hover:text-black dark:hover:text-white'
           }`}
         >
           Lattice
@@ -244,7 +246,7 @@ export const Hero3DModel: React.FC = () => {
       </div>
 
       {/* Radial soft fade mask so model sits smoothly behind text */}
-      <div className="absolute inset-0 bg-radial from-transparent via-[#f7f7f7]/40 to-[#f7f7f7] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-radial from-transparent via-[#f7f7f7]/40 to-[#f7f7f7] dark:via-[#0b0c0e]/40 dark:to-[#0b0c0e] pointer-events-none"></div>
     </div>
   );
 };

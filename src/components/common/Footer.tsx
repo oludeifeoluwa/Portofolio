@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
                   className="flex items-center gap-1.5 hover:text-[#000000] dark:hover:text-[#f8fafc] dark:text-[#f8fafc] transition-colors"
                 >
                   <Mail size={13} />
-                  <span>{PROFILE.email}</span>
+                  <span className="min-w-0 break-all">{PROFILE.email}</span>
                   <ArrowUpRight size={11} className="text-[#949494] dark:text-[#64748b]" />
                 </a>
               </li>
